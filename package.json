@@ -1,0 +1,24 @@
+{
+  "name": "joshtest",
+  "version": "1.0.0",
+  "description": "A testing framework to test as simple as slepping.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josh-programmieren/joshtest-javascript.git"
+  },
+  "keywords": [
+    "joshtest",
+    "test",
+    "simple"
+  ],
+  "author": "Joshua Rohmann",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/josh-programmieren/joshtest-javascript/issues"
+  },
+  "homepage": "https://github.com/josh-programmieren/joshtest-javascript#readme"
+}
