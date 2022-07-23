@@ -15,4 +15,4 @@ Joshtest is a library which is used to test in a very simple way.
 4. Run build (npm run build)
 5. Run test (npm run test)
 6. Make a pull request!
-Important: If you're using any folder that has to be ignored, please edit the .gitignore file too!
+Important: If you're creating a file or folder that has to be ignored, please edit the .gitignore file too!
