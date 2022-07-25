@@ -1,30 +1,35 @@
 {
-  "name": "joshtest",
-  "version": "1.0.0",
-  "description": "A testing framework to test as simple as slepping.",
-  "main": "lib/index.js",
-  "scripts": {
-    "test": "node test/test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/josh-programmieren/joshtest-javascript.git"
-  },
-  "keywords": [
-    "joshtest",
-    "test",
-    "simple"
-  ],
-  "author": "Joshua Rohmann",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/josh-programmieren/joshtest-javascript/issues"
-  },
-  "homepage": "https://github.com/josh-programmieren/joshtest-javascript#readme",
-  "devDependencies": {
-    "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "@types/node": "^18.6.1"
-  }
+    "name": "joshtest",
+    "version": "1.0.0",
+    "description": "A testing framework to test as simple as slepping.",
+    "main": "lib/index.js",
+    "scripts": {
+        "test": "node test/test.js",
+        "commit": "npm run build && npm run test && git add . && set /p commit_message='Type a commit messsage'&& git commit -m commit_message && git branch -M main && git push joshstest-javascript",
+        "build": "tsc",
+        "prepublish": "npm run build",
+        "publish": "npm run build && npm publish",
+        "postpublish": "npm run commit"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/josh-programmieren/joshtest-javascript.git"
+    },
+    "keywords": [
+        "joshtest",
+        "test",
+        "simple"
+    ],
+    "author": "Joshua Rohmann",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/josh-programmieren/joshtest-javascript/issues"
+    },
+    "homepage": "https://github.com/josh-programmieren/joshtest-javascript#readme",
+    "devDependencies": {
+        "typescript": "^4.7.4"
+    },
+    "dependencies": {
+        "@types/node": "^18.6.1"
+    }
 }
