@@ -1,0 +1,59 @@
+# This workflow releases a new version of the project. It is triggered by the push request to the main branch.
+# This workflow has the following jobs:
+# 1. build: This job builds the package.
+# 2. test: This job runs the tests.
+# 3. publish: This job publishes the package.
+# 4. release: This job releases the package.
+on: # Says when the workflow is triggered
+   push: # Says what event triggers the workflow
+     branches: # Says which branches trigger the workflow
+       - main # The main branch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: actions/setup-node@v1
+      - name: Run build
+        run: npm run build
+      - name: notify
+        uses: actions/notify@v1
+        with:
+          message: "Automated build has finished running."
+          emoji: ":tada:"
+          channel: "#general"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: actions/setup-node@v1
+      - name: Run test
+        run: npm run test
+      - name: notify
+        uses: actions/notify@v1
+        with:
+          message: "Automated tests have finished running."
+          emoji: ":tada:"
+          channel: "#general"
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: actions/setup-node@v1
+      - name: Publish
+        run: npm publish
+      - name: notify
+        uses: actions/notify@v1
+        with:
+          message: "Automated publish has finished running."
+          emoji: ":tada:"
+          channel: "#general"
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: GitHub realease
+        uses: actions/release@v1

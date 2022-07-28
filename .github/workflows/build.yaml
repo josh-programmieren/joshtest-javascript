@@ -1,0 +1,13 @@
+# This actions is only used for the build workflow.
+# It does not run any tests or anything else.
+on: push # This is the default, but I like to be explicit.
+jobs:
+  build: # This job buiilds the packae
+    runs-on: ubuntu-latest # Ubuntu is the operating system we want to use
+    steps:
+      - uses: actions/checkout@v2 # First we checkout the repo.
+      - name: Install dependencies
+        uses: actions/setup-node@v1 # This installs the node dependencies.
+      - name: Build the package
+        run: npm run build # This builds the package.
+  

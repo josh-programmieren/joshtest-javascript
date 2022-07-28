@@ -5,11 +5,9 @@
     "main": "lib/index.js",
     "scripts": {
         "test": "node test/test.js",
-        "commit": "npm run build && npm run test && git add . && set /p commit_message='Type a commit messsage'&& git commit -m '%commit_message%' && git branch -M main && git push joshtest-javascript",
         "build": "tsc",
         "prepublish": "npm run build",
-        "publish": "npm run build && npm publish",
-        "postpublish": "npm run commit"
+        "publish": "npm run build && npm publish"
     },
     "repository": {
         "type": "git",

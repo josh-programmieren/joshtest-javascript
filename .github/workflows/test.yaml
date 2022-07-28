@@ -1,0 +1,25 @@
+# This workflow runs the automated tests for the project. It is triggered by the push request to the main branch.
+on: # Says when the workflow is triggered
+  push: # Says what event triggers the workflow
+    branches: # Says which branches trigger the workflow
+      - main # The main branch
+  pull_request: # Says what event triggers the workflow
+    branches: # Says which branches trigger the workflow
+      - main # The main branch
+jobs: # Defines the jobs that will be run
+  test: # Defines the job
+    runs-on: ubuntu-latest # Defines the OS that the job will run on
+    steps: # Defines the steps that will be run
+      - uses: actions/checkout@v2 # Checks out the project
+      - name: Install dependencies
+        uses: actions/setup-node@v1 # Installs the node dependencies
+      - name: Run build # Defines the name of the step
+        run: npm run build # Defines the command that will be run	
+      - name: Run test # Defines the name of the step
+        run: npm run test # Defines the command that will be run
+      - name: notify # Defines the name of the step
+        uses: actions/notify@v1 # Notifies the user of the status of the job
+        with: # Defines the notification
+          message: "Automated tests have finished running." # The message that will be displayed
+          emoji: ":tada:" # The emoji that will be displayed
+          channel: "#general" # The channel that the notification will be sent to
