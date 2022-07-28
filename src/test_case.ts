@@ -1,4 +1,4 @@
-interface TestCase {
+export interface TestCase {
     name: string;
     hasParams: boolean;
     params?: any;
