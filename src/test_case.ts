@@ -1,4 +1,5 @@
 export interface TestCase {
+    /** This interface defines how a test case has to look like */
     name: string;
     hasParams: boolean;
     params?: any;
@@ -6,10 +7,10 @@ export interface TestCase {
     expected: any;
     passed: boolean;
     error?: Error;
-    run():boolean
+    run():void;
 }
 export class NonParamTestCase implements TestCase {
-    name: string;
+    /** This is the class to create tests that haven't any params */   name: string;
     hasParams: boolean;
     params?: any;
     func: Function;
@@ -22,10 +23,18 @@ export class NonParamTestCase implements TestCase {
         this.expected = expected;
         this.passed = false;
         this.func = func;
+        this.error=Error("No error");
     }
-    run():boolean {
-        return this.func()===this.expected;
+    run():void {
+        try {
+        this.passed=this.func()===this.expected;
     }
+    catch(e:any){ {
+        this.error = e;
+        this.passed = false;
+    }
+}
+}
 }
 export class ParamTestCase implements TestCase {
     name: string;
@@ -43,7 +52,14 @@ export class ParamTestCase implements TestCase {
         this.passed = false;
         this.func = func;
     }
-    run():boolean {
-        return this.func(this.params)===this.expected;
+    run():void {
+        try {
+        this.passed=this.func(this.params)===this.expected;
     }
+    catch(e:any){ {
+        this.error = e;
+        this.passed=false;
+    }
+}
+}
 }
